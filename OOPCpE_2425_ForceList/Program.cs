@@ -41,6 +41,12 @@ namespace OOPCpE_2425_ForceList
             DisplayArray(myList);
             myList = RemoveValue(myList, 13);
             DisplayArray(myList);
+
+            DisplayArray(FindAllValue(myList, 4));
+            myList = RemoveIndex(myList, 4);
+            DisplayArray(myList);
+            myList = RemoveAllValue(myList, 6);
+            DisplayArray(myList);
         }
 
         static int[] AddToList(int[] arr,int value)
@@ -95,6 +101,37 @@ namespace OOPCpE_2425_ForceList
                 newArr[x - 1] = arr[x];
 
             return newArr;
+        }
+
+        static int[] FindAllValue(int[] arr, int value)
+        {
+            int[] result = { };
+            for (int x = 0; x < arr.Length; x++)
+                if (arr[x] == value)
+                    result = AddToList(result, x);
+
+            return result;
+        }
+
+        static int[] RemoveIndex(int[] arr, int index)
+        {
+            int[] newArr = new int[arr.Length - 1];
+
+            for (int x = 0; x < index; x++)
+                newArr[x] = arr[x];
+
+            for (int x = index + 1; x < arr.Length; x++)
+                newArr[x - 1] = arr[x];
+
+            return newArr;
+        }
+
+        static int[] RemoveAllValue(int[] arr, int value)
+        {
+            while(ValueContain(arr, value))
+                arr = RemoveValue(arr, value);
+
+            return arr;
         }
     }
 }
