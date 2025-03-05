@@ -91,16 +91,9 @@ namespace OOPCpE_2425_ForceList
 
         static int[] RemoveValue(int[] arr, int value)
         {
-            int[] newArr = new int[arr.Length - 1];
             int indexToRemove = FindValue(arr, value);
 
-            for (int x = 0; x < indexToRemove; x++)
-                newArr[x] = arr[x];
-
-            for (int x = indexToRemove + 1; x < arr.Length; x++)
-                newArr[x - 1] = arr[x];
-
-            return newArr;
+            return RemoveIndex(arr, indexToRemove);
         }
 
         static int[] FindAllValue(int[] arr, int value)
